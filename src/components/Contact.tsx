@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,20 +29,23 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Create mailto link with form data
-      const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio');
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      );
-      const mailtoLink = `mailto:work.jasleenkaur@gmail.com?subject=${subject}&body=${body}`;
-      
-      // Open email client
-      window.location.href = mailtoLink;
-      
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        }
+      });
+
+      if (error) {
+        throw error;
+      }
+
       // Show success message
       toast({
-        title: "Email client opened!",
-        description: "Your default email application should now be open with the message ready to send.",
+        title: "Message sent successfully!",
+        description: "Thank you for your message. I'll get back to you soon.",
       });
 
       // Reset form
@@ -51,10 +55,11 @@ const Contact = () => {
         subject: '',
         message: ''
       });
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Error sending email:', error);
       toast({
-        title: "Error",
-        description: "There was an issue opening your email client. Please try contacting me directly.",
+        title: "Failed to send message",
+        description: error.message || "There was an issue sending your message. Please try again.",
         variant: "destructive"
       });
     } finally {
@@ -205,7 +210,7 @@ const Contact = () => {
                   </Button>
 
                   <p className="text-xs text-muted-foreground text-center">
-                    This will open your default email application with the message ready to send.
+                    Your message will be sent directly to my email.
                   </p>
                 </form>
               </CardContent>
