@@ -6,6 +6,24 @@ import { Badge } from '@/components/ui/badge';
 const Projects = () => {
   const projects = [
     {
+      title: "Cyber-Vault",
+      description: "CyberVault is a local-first desktop app built with Electron and React that securely stores sensitive data offline using AES-256 encryption and biometric authentication.",
+      technologies: ["TypeScript", "Electron", " Python", "WebAuthn", "AES-256", "PBKDF2"],
+      year: "2025",
+      category: "Full Stack",
+      features: [
+        "End-to-end AES-256 file encryption",
+        "Multi-factor biometric authentication",
+        "Secure master password & PIN protection",
+        "100% offline with no cloud dependency",
+        "Built with React, TypeScript, and Electron",
+        "OCR support & secure backup options"
+      ],
+      githubUrl: "https://github.com/rudranshhere009/Cyber-Vault",
+      liveUrl: null,
+      color: "primary"
+    },
+    {
       title: "AI Image Generator",
       description: "A Flutter application that leverages AI to generate high-quality images from text prompts. Features include real-time generation, image history, and customizable parameters.",
       technologies: ["Flutter", "BLoC", "Image API", "State Management", "Custom UI"],
@@ -17,7 +35,7 @@ const Projects = () => {
         "Customizable generation parameters",
         "High-quality image output"
       ],
-      githubUrl: "https://github.com/JASLEENKAUR13",
+      githubUrl: "https://github.com/JASLEENKAUR13/ImageGenerator",
       liveUrl: null,
       color: "primary"
     },
@@ -33,26 +51,11 @@ const Projects = () => {
         "Real-time comments and reactions",
         "Responsive design across devices"
       ],
-      githubUrl: "https://github.com/JASLEENKAUR13",
+      githubUrl: "https://github.com/JASLEENKAUR13/blogApp",
       liveUrl: null,
       color: "accent"
     },
-    {
-      title: "Student Dashboard",
-      description: "An analytical dashboard for students featuring interactive charts and data visualization. Built with Flutter and Syncfusion for comprehensive academic tracking.",
-      technologies: ["Flutter", "4-Charts", "Syncfusion", "Data Visualization", "Analytics"],
-      year: "2025",
-      category: "Dashboard",
-      features: [
-        "Interactive data visualizations",
-        "Academic progress tracking",
-        "Performance analytics",
-        "Customizable chart types"
-      ],
-      githubUrl: "https://github.com/JASLEENKAUR13",
-      liveUrl: null,
-      color: "primary"
-    },
+
     {
       title: "Pomodoro Productivity App",
       description: "A beautiful productivity application implementing the Pomodoro Technique. Features include customizable timers, statistics tracking, and focus session management.",
@@ -65,7 +68,7 @@ const Projects = () => {
         "Background notifications",
         "Beautiful, distraction-free UI"
       ],
-      githubUrl: "https://github.com/JASLEENKAUR13",
+      githubUrl: "https://github.com/JASLEENKAUR13/Pomotask",
       liveUrl: null,
       color: "accent"
     },
@@ -81,7 +84,7 @@ const Projects = () => {
         "Location-based services",
         "Beautiful weather animations"
       ],
-      githubUrl: "https://github.com/JASLEENKAUR13",
+      githubUrl: "https://github.com/JASLEENKAUR13/WeatherForeCastApp",
       liveUrl: null,
       color: "primary"
     }
@@ -107,11 +110,10 @@ const Projects = () => {
               <Card key={project.title} className="glass-card border-0 project-card overflow-hidden group">
                 <CardContent className="p-0">
                   {/* Project Header */}
-                  <div className={`p-6 ${
-                    project.color === 'primary' 
-                      ? 'bg-gradient-to-br from-primary/10 to-primary/5' 
+                  <div className={`p-6 ${project.color === 'primary'
+                      ? 'bg-gradient-to-br from-primary/10 to-primary/5'
                       : 'bg-gradient-to-br from-accent/10 to-accent/5'
-                  }`}>
+                    }`}>
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <Badge variant="secondary" className="mb-2">
@@ -120,7 +122,7 @@ const Projects = () => {
                         <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                         <p className="text-sm text-muted-foreground">{project.year}</p>
                       </div>
-                      <div className="flex space-x-2">
+                      {/* <div className="flex space-x-2">
                         <Button size="sm" variant="ghost" className="p-2" asChild>
                           <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                             <Github className="h-4 w-4" />
@@ -133,20 +135,19 @@ const Projects = () => {
                             </a>
                           </Button>
                         )}
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* Technology Tags */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
-                        <Badge 
-                          key={tech} 
-                          variant="outline" 
-                          className={`text-xs ${
-                            project.color === 'primary' 
-                              ? 'border-primary/30 text-primary' 
+                        <Badge
+                          key={tech}
+                          variant="outline"
+                          className={`text-xs ${project.color === 'primary'
+                              ? 'border-primary/30 text-primary'
                               : 'border-accent/30 text-accent'
-                          }`}
+                            }`}
                         >
                           {tech}
                         </Badge>
@@ -166,9 +167,8 @@ const Projects = () => {
                       <ul className="space-y-2">
                         {project.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-start space-x-2 text-sm">
-                            <div className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${
-                              project.color === 'primary' ? 'bg-primary' : 'bg-accent'
-                            }`} />
+                            <div className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${project.color === 'primary' ? 'bg-primary' : 'bg-accent'
+                              }`} />
                             <span className="text-muted-foreground">{feature}</span>
                           </li>
                         ))}
@@ -177,9 +177,9 @@ const Projects = () => {
 
                     {/* Action Buttons */}
                     <div className="flex space-x-3">
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
+                      <Button
+                        variant="outline"
+                        size="sm"
                         className="flex-1"
                         asChild
                       >
@@ -189,11 +189,10 @@ const Projects = () => {
                         </a>
                       </Button>
                       {project.liveUrl && (
-                        <Button 
-                          size="sm" 
-                          className={`flex-1 ${
-                            project.color === 'primary' ? 'btn-hero' : ''
-                          }`}
+                        <Button
+                          size="sm"
+                          className={`flex-1 ${project.color === 'primary' ? 'btn-hero' : ''
+                            }`}
                           asChild
                         >
                           <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -211,8 +210,8 @@ const Projects = () => {
 
           {/* View More Projects */}
           <div className="text-center mt-12">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
               className="border-primary/30 hover:border-primary transition-all duration-300"
               asChild

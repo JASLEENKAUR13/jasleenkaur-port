@@ -42,6 +42,14 @@ const Experience = () => {
       description: "Achieved semi-finalist status in a competitive environment, demonstrating innovative problem-solving skills and teamwork.",
       type: "Achievement",
       url: null
+    }, 
+    {
+      title: "GirlScript Summer of Code - Open source Contributor",
+      issuer: "GirlScript Foundation",
+      date: "April 2025",
+      description: "Contributed to open-source projects, enhancing coding skills and collaborating with a global community of developers.",
+      type: "Achievement",
+      url: null
     }
   ];
 
@@ -199,21 +207,26 @@ const Experience = () => {
                 ))}
               </div>
 
-              {/* Additional Info Card */}
+            </div>
+          </div>
+
+          {/* Centered Opportunities Card */}
+          <div className="mt-12 flex justify-center">
+            <div className="max-w-2xl w-full px-4">
               <Card className="glass-card border-0">
-                <CardContent className="p-6 text-center">
-                  <h4 className="text-lg font-semibold mb-3">Open to Opportunities</h4>
-                  <p className="text-sm text-muted-foreground mb-4">
+                <CardContent className="p-8 text-center">
+                  <h4 className="text-2xl font-semibold mb-4">Open to Opportunities</h4>
+                  <p className="text-muted-foreground mb-6">
                     Currently seeking internship and full-time opportunities in software development, 
                     mobile app development, and full-stack engineering roles.
                   </p>
-                  <div className="flex justify-center space-x-4 text-sm">
+                  <div className="flex justify-center space-x-8">
                     <div className="text-center">
-                      <div className="font-semibold text-primary">Available</div>
+                      <div className="font-semibold text-primary text-lg">Available</div>
                       <div className="text-muted-foreground">Remote Work</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-semibold text-accent">Open to</div>
+                      <div className="font-semibold text-accent text-lg">Open to</div>
                       <div className="text-muted-foreground">Relocation</div>
                     </div>
                   </div>

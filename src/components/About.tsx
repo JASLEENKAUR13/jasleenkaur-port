@@ -43,7 +43,7 @@ const About = () => {
               {/* Quick Stats */}
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="text-center p-4 glass-card rounded-lg">
-                  <div className="text-2xl font-bold text-primary">15+</div>
+                  <div className="text-2xl font-bold text-primary">5+</div>
                   <div className="text-sm text-muted-foreground">Projects Completed</div>
                 </div>
                 <div className="text-center p-4 glass-card rounded-lg">
@@ -93,7 +93,7 @@ const About = () => {
                               <Calendar className="h-4 w-4" />
                               <span>2022</span>
                             </div>
-                            <div className="text-primary font-medium">Score: 85%</div>
+                            <div className="text-primary font-medium">Score: 89%</div>
                           </div>
                         </div>
                       </div>

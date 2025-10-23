@@ -41,6 +41,8 @@ const Skills = () => {
       skills: [
         { name: "Flutter", level: 95 },
         { name: "Android SDK", level: 85 },
+         
+
         { name: "Jetpack Compose", level: 80 },
         { name: "BLoC Pattern", level: 90 },
         { name: "State Management", level: 88 },
@@ -66,6 +68,7 @@ const Skills = () => {
         { name: "Firebase", level: 90 },
         { name: "Supabase", level: 88 },
         { name: "MySQL", level: 80 },
+       { name: "Postgresql", level: 80 },
         { name: "Cloud Integration", level: 85 },
         { name: "Data Management", level: 87 },
       ]

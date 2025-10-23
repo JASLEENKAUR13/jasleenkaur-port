@@ -65,11 +65,12 @@ const Hero = () => {
               variant="outline" 
               className="text-lg px-8 py-3 border-primary/30 hover:border-primary transition-all duration-300"
               onClick={() => {
-                // Create a downloadable resume link
                 const link = document.createElement('a');
-                link.href = '/jasleen-kaur-resume.pdf'; // You'll need to add this file
+                link.href = '/Jasleen_Kaur_Resume.pdf';
                 link.download = 'Jasleen_Kaur_Resume.pdf';
+                document.body.appendChild(link);
                 link.click();
+                document.body.removeChild(link);
               }}
             >
               <Download className="mr-2 h-5 w-5" />
@@ -88,7 +89,7 @@ const Hero = () => {
               <Github className="h-6 w-6" />
             </a>
             <a 
-              href="https://linkedin.com/in/jasleenkaur13" 
+              href="https://www.linkedin.com/in/jasleen-kaur-6b2906255/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 glass-card rounded-full hover:scale-110 transition-transform duration-300 hover:shadow-glow"

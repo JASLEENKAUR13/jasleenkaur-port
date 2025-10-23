@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +13,6 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,47 +22,34 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(formData.subject || `Message from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    const mailtoLink = `mailto:work.jasleenkaur@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    toast({
+      title: "Opening email client...",
+      description: "Your default email app will open with the pre-filled message.",
+    });
 
-    try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message
-        }
-      });
-
-      if (error) {
-        throw error;
-      }
-
-      // Show success message
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-
-      // Reset form
+    // Reset form after a short delay
+    setTimeout(() => {
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: ''
       });
-    } catch (error: any) {
-      console.error('Error sending email:', error);
-      toast({
-        title: "Failed to send message",
-        description: error.message || "There was an issue sending your message. Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const contactInfo = [
@@ -101,7 +86,7 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/jasleenkaur13",
+      href: "https://www.linkedin.com/in/jasleen-kaur-6b2906255/",
       color: "accent"
     }
   ];
@@ -194,19 +179,9 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     className="btn-hero w-full text-lg py-3"
-                    disabled={isSubmitting}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                        Opening Email Client...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="mr-2 h-5 w-5" />
-                        Send Message
-                      </>
-                    )}
+                    <Send className="mr-2 h-5 w-5" />
+                    Send via Email
                   </Button>
 
                   <p className="text-xs text-muted-foreground text-center">

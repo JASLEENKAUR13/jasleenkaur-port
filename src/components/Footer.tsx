@@ -11,7 +11,7 @@ const Footer = () => {
     },
     {
       icon: Linkedin,
-      href: "https://linkedin.com/in/jasleenkaur13",
+      href: "https://www.linkedin.com/in/jasleen-kaur-6b2906255/",
       label: "LinkedIn"
     },
     {
@@ -62,19 +62,7 @@ const Footer = () => {
               })}
             </div>
 
-            {/* Right Side - Copyright */}
-            <div className="text-center md:text-right">
-              <p className="text-sm text-muted-foreground flex items-center justify-center md:justify-end space-x-1">
-                <span>© {currentYear} Made with</span>
-                <Heart className="h-4 w-4 text-red-500 animate-pulse" />
-                <span>and</span>
-                <Code className="h-4 w-4 text-primary" />
-                <span>by Jasleen Kaur</span>
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                Built with React, TypeScript & Tailwind CSS
-              </p>
-            </div>
+            
           </div>
 
           {/* Bottom Line */}
